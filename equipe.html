@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Equipe - riqwvon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family: "Inter", ui-sans-serif, system-ui, sans-serif; background-color: #070607; color: #f5f1f1; margin: 0; }
+    .page-bg { background-color: #070607; background-image: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(185,28,28,0.12), transparent 60%); background-size: 100% 100%; }
+    .card { position: relative; background: linear-gradient(135deg, #140d0f 0%, #0e0a0b 100%); border: 1px solid rgba(220,38,38,0.18); border-radius: 12px; box-shadow: 0 0 0 1px rgba(220,38,38,0.06), 0 4px 16px rgba(185,28,28,0.08); transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease; }
+    .card:hover { border-color: rgba(220,38,38,0.45); transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(220,38,38,0.18), 0 8px 28px rgba(185,28,28,0.18); }
+    .no-scrollbar::-webkit-scrollbar { display: none; } .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .animate-spin { animation: spin 1s linear infinite; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .badge-admin { background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%); color: #fff; }
+    .badge-membro { background: rgba(220,38,38,0.15); color: #fca5a5; }
+    .badge-ceo { background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%); color: #fff; }
+  </style>
+</head>
+<body class="page-bg min-h-screen flex">
+  <!-- Sidebar (Desktop) -->
+  <aside id="sidebar" class="hidden md:flex flex-col shrink-0 bg-[#0f0a0b] sticky top-0 h-[100dvh] transition-[width] duration-200 w-[220px]">
+    <button type="button" onclick="toggleSidebar()" class="lg:hidden absolute -right-3 top-20 z-30 h-6 w-6 rounded-full bg-red-main text-white flex items-center justify-center shadow-[0_0_10px_rgba(185,28,28,0.5)]" aria-label="Recolher sidebar">
+      <i data-lucide="chevron-right" class="h-4 w-4 transition-transform" id="chevron-icon"></i>
+    </button>
+    <div class="flex items-center gap-3 px-3 lg:px-4 py-5 shrink-0">
+      <div class="h-9 w-9 rounded-xl bg-black flex items-center justify-center shrink-0">
+        <i data-lucide="code" class="h-[18px] w-[18px] text-[#FF0000]" stroke-width="1.75"></i>
+      </div>
+      <span class="block lg:block text-lg font-bold tracking-tight text-textMain">riqwvon</span>
+    </div>
+    <nav class="flex-1 px-2 space-y-1 overflow-y-auto no-scrollbar">
+      <a href="dashboard.html" class="group relative flex items-center gap-3 rounded-xl px-3 h-[52px] text-sm font-medium text-textSecondary hover:text-textMain hover:bg-red-main/8 transition-colors">
+        <i data-lucide="layout-dashboard" class="h-[18px] w-[18px] shrink-0 text-textSecondary group-hover:text-red-strong" stroke-width="1.75"></i>
+        <span class="block lg:block truncate">Dashboard</span>
+      </a>
+      <a href="#" class="group relative flex items-center gap-3 rounded-xl px-3 h-[52px] text-sm font-medium sidebar-active text-white scale-[1.02]">
+        <i data-lucide="users" class="h-[18px] w-[18px] shrink-0 text-white" stroke-width="1.75"></i>
+        <span class="block lg:block truncate">Equipe</span>
+      </a>
+      <a href="#" class="group relative flex items-center gap-3 rounded-xl px-3 h-[52px] text-sm font-medium text-textSecondary hover:text-textMain hover:bg-red-main/8 transition-colors">
+        <i data-lucide="plus" class="h-[18px] w-[18px] shrink-0 text-textSecondary group-hover:text-red-strong" stroke-width="1.75"></i>
+        <span class="block lg:block truncate">Criar</span>
+      </a>
+      <a href="#" class="group relative flex items-center gap-3 rounded-xl px-3 h-[52px] text-sm font-medium text-textSecondary hover:text-textMain hover:bg-red-main/8 transition-colors">
+        <i data-lucide="folder" class="h-[18px] w-[18px] shrink-0 text-textSecondary group-hover:text-red-strong" stroke-width="1.75"></i>
+        <span class="block lg:block truncate">Meus Projetos</span>
+      </a>
+      <a href="#" class="group relative flex items-center gap-3 rounded-xl px-3 h-[52px] text-sm font-medium text-textSecondary hover:text-textMain hover:bg-red-main/8 transition-colors">
+        <i data-lucide="coins" class="h-[18px] w-[18px] shrink-0 text-textSecondary group-hover:text-red-strong" stroke-width="1.75"></i>
+        <span class="block lg:block truncate">Créditos</span>
+      </a>
+      <a href="#" class="group relative flex items-center gap-3 rounded-xl px-3 h-[52px] text-sm font-medium text-textSecondary hover:text-textMain hover:bg-red-main/8 transition-colors">
+        <i data-lucide="target" class="h-[18px] w-[18px] shrink-0 text-textSecondary group-hover:text-red-strong" stroke-width="1.75"></i>
+        <span class="block lg:block truncate">Prospecção</span>
+      </a>
+      <a href="#" class="group relative flex items-center gap-3 rounded-xl px-3 h-[52px] text-sm font-medium text-textSecondary hover:text-textMain hover:bg-red-main/8 transition-colors">
+        <i data-lucide="file-signature" class="h-[18px] w-[18px] shrink-0 text-textSecondary group-hover:text-red-strong" stroke-width="1.75"></i>
+        <span class="block lg:block truncate">Contratos</span>
+      </a>
+      <a href="#" class="group relative flex items-center gap-3 rounded-xl px-3 h-[52px] text-sm font-medium text-textSecondary hover:text-textMain hover:bg-red-main/8 transition-colors">
+        <i data-lucide="book-open" class="h-[18px] w-[18px] shrink-0 text-textSecondary group-hover:text-red-strong" stroke-width="1.75"></i>
+        <span class="block lg:block truncate">Biblioteca de Conteúdo</span>
+        <span class="ml-auto text-[10px] font-semibold px-1.5 py-0.5 rounded bg-red-main text-white">NEW</span>
+      </a>
+    </nav>
+    <div class="px-2 space-y-1 shrink-0 mt-3 p-3">
+      <div class="relative flex items-center gap-2 cursor-pointer group" onclick="openAvatarEditor()">
+        <div class="h-10 w-10 rounded-full bg-red-dark flex items-center justify-center text-white font-semibold shrink-0 overflow-hidden border border-red-main/50 cursor-pointer" id="avatar-img">
+          <span class="text-xs">R</span>
+        </div>
+        <span class="text-[10px] font-semibold text-textSecondary">@</span>
+        <span id="sidebar-user-name" class="text-xs font-semibold text-textMain cursor-pointer hover:underline" onclick="openNameEditor()">riquelmhq</span>
+        <button type="button" id="sidebar-edit-btn" class="h-5 w-5 rounded-full bg-white/5 text-textSecondary hover:bg-white/10 flex items-center justify-center transition-colors" title="Salvar nome">
+          <i data-lucide="edit-2" class="h-3 w-3" stroke-width="1.75"></i>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="flex-1 min-w-0 flex flex-col">
+    <!-- Topbar Mobile -->
+    <header id="topbar" class="md:hidden fixed top-0 left-0 right-0 z-40 bg-[#0f0a0b]/95 backdrop-blur h-14 px-4">
+      <div class="flex items-center justify-between h-full">
+        <div class="flex items-center gap-2">
+          <div class="h-8 w-8 rounded-lg bg-black flex items-center justify-center">
+            <i data-lucide="code" class="h-4 w-4 text-[#FF0000]" stroke-width="2"></i>
+          </div>
+          <span class="text-base font-bold text-textMain">riqwvon</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div onclick="openAvatarEditor()" class="relative flex items-center gap-2 cursor-pointer">
+            <div class="h-8 w-8 rounded-full bg-red-dark flex items-center justify-center text-white font-semibold shrink-0 overflow-hidden border border-red-main/50 cursor-pointer" id="topbar-avatar">
+              <span class="text-xs">R</span>
+            </div>
+            <span class="text-[10px] font-semibold text-textSecondary">@</span>
+            <span id="topbar-user-name" class="text-xs font-semibold text-textMain cursor-pointer hover:underline" onclick="openNameEditor()">riquelmhq</span>
+            <button type="button" id="topbar-edit-btn" class="h-5 w-5 rounded-full bg-white/5 text-textSecondary hover:bg-white/10 flex items-center justify-center transition-colors" title="Salvar nome">
+              <i data-lucide="edit-2" class="h-3 w-3" stroke-width="1.75"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 px-4 md:px-6 lg:px-8 pt-16 md:pt-6 pb-24 md:pb-8">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
+        <div>
+          <h1 class="text-[22px] font-bold text-textMain">Equipe</h1>
+          <p class="text-sm text-textSecondary mt-1">Gerencie os membros da sua equipe.</p>
+        </div>
+        <div class="flex items-center gap-3 w-full md:w-auto">
+          <button type="button" onclick="openAddMemberModal()" class="flex items-center gap-2 text-sm text-textSecondary hover:text-textMain px-3 py-2 rounded-lg hover:bg-white/5 transition-colors">
+            <i data-lucide="plus" class="h-4 w-4" stroke-width="1.75"></i>
+            Adicionar
+          </button>
+        </div>
+      </div>
+
+      <!-- Members List -->
+      <div class="space-y-3">
+        <div class="card p-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-full bg-red-dark flex items-center justify-center text-white font-semibold shrink-0 overflow-hidden border border-red-main/30">
+                <span class="text-sm">J</span>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-textMain">João Silva</p>
+                <span class="text-[10px] font-semibold badge-admin px-2 py-0.5 rounded">Admin</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" class="p-1.5 text-textSecondary hover:text-textMain" title="Editar">
+                <i data-lucide="edit-2" class="h-4 w-4" stroke-width="1.75"></i>
+              </button>
+              <button type="button" class="p-1.5 text-textSecondary hover:text-textMain" title="Remover">
+                <i data-lucide="trash-2" class="h-4 w-4" stroke-width="1.75"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card p-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-full bg-red-dark flex items-center justify-center text-white font-semibold shrink-0 overflow-hidden border border-red-main/30">
+                <span class="text-xs">M</span>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-textMain">Maria Santos</p>
+                <span class="text-[10px] font-semibold badge-membro px-2 py-0.5 rounded">Membro</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" class="p-1.5 text-textSecondary hover:text-textMain" title="Editar">
+                <i data-lucide="edit-2" class="h-4 w-4" stroke-width="1.75"></i>
+              </button>
+              <button type="button" class="p-1.5 text-textSecondary hover:text-textMain" title="Remover">
+                <i data-lucide="trash-2" class="h-4 w-4" stroke-width="1.75"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card p-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-full bg-red-dark flex items-center justify-center text-white font-semibold shrink-0 overflow-hidden border border-red-main/30">
+                <span class="text-xs">C</span>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-textMain">Carlos Oliveira</p>
+                <span class="text-[10px] font-semibold badge-ceo px-2 py-0.5 rounded">CEO</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" class="p-1.5 text-textSecondary hover:text-textMain" title="Editar">
+                <i data-lucide="edit-2" class="h-4 w-4" stroke-width="1.75"></i>
+              </button>
+              <button type="button" class="p-1.5 text-textSecondary hover:text-textMain" title="Remover">
+                <i data-lucide="trash-2" class="h-4 w-4" stroke-width="1.75"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Nav Mobile -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0f0a0b]/95 backdrop-blur border-t border-red-main/60">
+      <div class="flex items-center justify-around h-16">
+        <button class="flex flex-col items-center justify-center gap-0.5 min-w-[48px] min-h-[48px] rounded-xl px-2 text-[10px] font-medium text-textSecondary">
+          <i data-lucide="folder" class="h-6 w-6" stroke-width="1.75"></i><span>Projetos</span>
+        </button>
+        <button class="flex flex-col items-center justify-center gap-0.5 min-w-[48px] min-h-[48px] rounded-xl px-2 text-[10px] font-medium text-textSecondary">
+          <i data-lucide="plus" class="h-6 w-6" stroke-width="1.75"></i><span>Criar</span>
+        </button>
+        <button class="flex flex-col items-center justify-center gap-0.5 min-w-[48px] min-h-[48px] rounded-xl px-2 text-[10px] font-medium text-textSecondary">
+          <i data-lucide="layout-dashboard" class="h-6 w-6" stroke-width="1.75"></i><span>Dashboard</span>
+        </button>
+        <button class="flex flex-col items-center justify-center gap-0.5 min-w-[48px] min-h-[48px] rounded-xl px-2 text-[10px] font-medium bg-gradient-to-br from-[#7f1d1d] to-[#dc2626]/40 text-white scale-105 shadow-[0_0_12px_rgba(185,28,28,0.4)]">
+          <i data-lucide="users" class="h-6 w-6 drop-shadow-[0_0_6px_rgba(220,38,38,0.6)]" stroke-width="1.75"></i><span>Equipe</span>
+        </button>
+        <button class="flex flex-col items-center justify-center gap-0.5 min-w-[48px] min-h-[48px] rounded-xl px-2 text-[10px] font-medium text-textSecondary">
+          <i data-lucide="menu" class="h-6 w-6" stroke-width="1.75"></i><span>Menu</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Name Editor Modal -->
+  <div id="name-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-[#0f0a0b] border border-red-main/30 rounded-xl p-6 w-full max-w-xs shadow-2xl" onclick="event.stopPropagation()">
+      <h3 class="text-sm font-semibold text-textMain mb-4">Editar Nome</h3>
+      <input type="text" id="name-input" value="riquelmhq" maxLength="30" class="w-full h-10 rounded bg-transparent border border-red-main/20 px-2 text-xs text-textMain focus:border-red-main focus:outline-none mb-4"/>
+      <div class="flex gap-2">
+        <button type="button" onclick="closeNameModal()" class="flex-1 py-2 rounded border border-red-main/20 text-xs text-textSecondary hover:bg-white/5 transition-colors">Cancelar</button>
+        <button type="button" onclick="saveName()" class="flex-1 py-2 rounded bg-red-main text-white text-xs font-semibold hover:bg-red-strong transition-colors">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Member Modal -->
+  <div id="add-member-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-[#0f0a0b] border border-red-main/30 rounded-xl p-6 w-full max-w-xs shadow-2xl" onclick="event.stopPropagation()">
+      <h3 class="text-sm font-semibold text-textMain mb-4">Adicionar Membro</h3>
+      <div class="space-y-3">
+        <div>
+          <label class="block text-[10px] font-semibold text-textSecondary mb-1 uppercase">Nome</label>
+          <input type="text" id="new-member-name" placeholder="Nome completo" class="w-full h-10 rounded bg-transparent border border-red-main/20 px-2 text-xs text-textMain focus:border-red-main focus:outline-none"/>
+        </div>
+        <div>
+          <label class="block text-[10px] font-semibold text-textSecondary mb-1 uppercase">Cargo</label>
+          <select id="new-member-role" class="w-full h-10 rounded bg-transparent border border-red-main/20 px-2 text-xs text-textMain focus:border-red-main focus:outline-none">
+            <option value="membro">Membro</option>
+            <option value="admin">Admin da Equipe</option>
+            <option value="ceo">CEO</option>
+          </select>
+        </div>
+        <div class="flex gap-2 pt-2">
+          <button type="button" onclick="closeAddMemberModal()" class="flex-1 py-2 rounded border border-red-main/20 text-xs text-textSecondary hover:bg-white/5 transition-colors">Cancelar</button>
+          <button type="button" onclick="saveMember()" class="flex-1 py-2 rounded bg-red-main text-white text-xs font-semibold hover:bg-red-strong transition-colors">Adicionar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      const chevron = document.getElementById("chevron-icon");
+      const expanded = sidebar.classList.contains("w-[72px]");
+      if (expanded) {
+        sidebar.classList.remove("w-[72px]");
+        sidebar.classList.add("w-[220px]");
+        chevron.classList.remove("rotate-180");
+      } else {
+        sidebar.classList.remove("w-[220px]");
+        sidebar.classList.add("w-[72px]");
+        chevron.classList.add("rotate-180");
+      }
+    }
+
+    // Name editor
+    function openNameEditor() {
+      document.getElementById("name-modal").classList.remove("hidden");
+      document.getElementById("name-input").focus();
+    }
+    function closeNameModal() {
+      document.getElementById("name-modal").classList.add("hidden");
+    }
+    function saveName() {
+      const input = document.getElementById("name-input");
+      const trimmed = input.value.trim();
+      if (trimmed) {
+        localStorage.setItem("crieai_user_name", trimmed);
+        document.getElementById("sidebar-user-name").textContent = trimmed;
+        document.getElementById("topbar-user-name").textContent = trimmed;
+      }
+      closeNameModal();
+    }
+    document.getElementById("name-input").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") saveName();
+      if (e.key === "Escape") closeNameModal();
+    });
+
+    // Avatar
+    function openAvatarEditor() {
+      const input = document.createElement("input");
+      input.type = "file";
+      input.accept = "image/*";
+      input.onchange = (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          const dataUrl = reader.result;
+          localStorage.setItem("crieai_user_avatar", dataUrl);
+          document.getElementById("avatar-img").innerHTML = `<img src="${dataUrl}" alt="Avatar" class="w-full h-full object-cover"/>`;
+          document.getElementById("topbar-avatar").innerHTML = `<img src="${dataUrl}" alt="Avatar" class="w-full h-full object-cover"/>`;
+        };
+        reader.readAsDataURL(file);
+      };
+      input.click();
+    }
+
+    const savedAvatar = localStorage.getItem("crieai_user_avatar");
+    if (savedAvatar) {
+      document.getElementById("avatar-img").innerHTML = `<img src="${savedAvatar}" alt="Avatar" class="w-full h-full object-cover"/>`;
+      document.getElementById("topbar-avatar").innerHTML = `<img src="${savedAvatar}" alt="Avatar" class="w-full h-full object-cover"/>`;
+    }
+
+    // Add member modal
+    function openAddMemberModal() {
+      document.getElementById("add-member-modal").classList.remove("hidden");
+    }
+    function closeAddMemberModal() {
+      document.getElementById("add-member-modal").classList.add("hidden");
+    }
+    function saveMember() {
+      const nameInput = document.getElementById("new-member-name");
+      const roleSelect = document.getElementById("new-member-role");
+      const name = nameInput.value.trim();
+      if (!name) return;
+
+      const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+      const role = roleSelect.value;
+      const roleClass = role === 'admin' ? 'badge-admin' : role === 'ceo' ? 'badge-ceo' : 'badge-membro';
+      const roleLabel = role === 'admin' ? 'Admin da Equipe' : role === 'ceo' ? 'CEO' : 'Membro';
+
+      const memberCard = document.createElement('div');
+      memberCard.className = 'card p-4';
+      memberCard.innerHTML = `
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-full bg-red-dark flex items-center justify-center text-white font-semibold shrink-0 overflow-hidden border border-red-main/30">
+              <span class="text-xs">${initials}</span>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-textMain">${name}</p>
+              <span class="text-[10px] font-semibold ${roleClass} px-2 py-0.5 rounded">${roleLabel}</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button type="button" class="p-1.5 text-textSecondary hover:text-textMain" title="Editar">
+              <i data-lucide="edit-2" class="h-4 w-4" stroke-width="1.75"></i>
+            </button>
+            <button type="button" class="p-1.5 text-textSecondary hover:text-textMain" title="Remover" onclick="this.closest('.card').remove()">
+              <i data-lucide="trash-2" class="h-4 w-4" stroke-width="1.75"></i>
+            </button>
+          </div>
+        </div>
+      `;
+      document.querySelector('.space-y-3').appendChild(memberCard);
+      lucide.createIcons();
+      nameInput.value = '';
+      closeAddMemberModal();
+    }
+
+    document.getElementById("add-member-modal").addEventListener("click", closeAddMemberModal);
+    document.getElementById("name-modal").addEventListener("click", closeNameModal);
+  </script>
+</body>
+</html>
